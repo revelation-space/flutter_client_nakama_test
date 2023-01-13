@@ -103,7 +103,7 @@ packages:
       name: flutter_nakama
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.5"
+    version: "0.2.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter

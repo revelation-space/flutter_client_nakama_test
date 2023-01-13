@@ -1,10 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:nakama/nakama.dart';
+import 'package:flutter_nakama/nakama.dart';
+import 'package:flutter_nakama/rtapi.dart' as rt;
 
 class Matchmaker extends StatefulWidget {
-  final Function(Match) onMatch;
+  final Function(rt.Match) onMatch;
 
   const Matchmaker({
     required this.onMatch,
@@ -16,7 +17,7 @@ class Matchmaker extends StatefulWidget {
 }
 
 class _MatchmakerState extends State<Matchmaker> {
-  MatchmakerTicket? matchmakerTicket;
+  rt.MatchmakerTicket? matchmakerTicket;
   StreamSubscription? onMatchmakerMatchedSubscription;
 
   void addMatchmaker() {
@@ -29,7 +30,7 @@ class _MatchmakerState extends State<Matchmaker> {
       // We got a match -> Join
       // The match token is also used to prevent unwanted users from attempting
       // to join a match they were not matched into.
-      final res = await ws.joinMatch(event.matchId!, token: event.token);
+      final res = await ws.joinMatch(event.matchId, token: event.token);
       widget.onMatch.call(res);
     });
 

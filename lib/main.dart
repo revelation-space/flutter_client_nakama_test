@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_nakama/api.dart' as api;
+import 'package:flutter_nakama/nakama.dart';
+import 'package:flutter_nakama/rtapi.dart' as rt;
 import 'package:logging/logging.dart';
-import 'package:nakama/nakama.dart';
-import 'package:simple_multiplayer_web/widgets/match_area.dart';
-import 'package:simple_multiplayer_web/widgets/matchmaker.dart';
-import 'package:simple_multiplayer_web/widgets/sign_in_box.dart';
-import 'package:simple_multiplayer_web/widgets/welcome.dart';
+import 'package:flutter_client_nakama_test/widgets/match_area.dart';
+import 'package:flutter_client_nakama_test/widgets/matchmaker.dart';
+import 'package:flutter_client_nakama_test/widgets/sign_in_box.dart';
+import 'package:flutter_client_nakama_test/widgets/welcome.dart';
 
 void main() {
   Logger.root.level = Level.ALL;
@@ -28,8 +30,8 @@ class __HomeScreenState extends State<_HomeScreen> {
   late final NakamaBaseClient _nakamaClient;
 
   Session? _session;
-  Account? _account;
-  Match? _match;
+  api.Account? _account;
+  rt.Match? _match;
 
   @override
   void initState() {
